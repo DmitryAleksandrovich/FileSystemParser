@@ -11,7 +11,7 @@
 int main(int argc, char* argv[])
 {
 	std::tr1::shared_ptr<ct::Component> ob(new fr::Folders);
-	dl::Display ds("D:\\GitHub");
+	dl::Display ds("C:\\Program Files");
 
 	ds.UserInteraction(ob);
 	

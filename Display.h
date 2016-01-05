@@ -19,6 +19,8 @@ public:
 	std::string GetPathDirectory() const;
 private:
 	std::string pathDirectory;
+	Display(Display const&);
+	Display& operator=(Display const&);
 };
 
 #endif // DISPLAY_H

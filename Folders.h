@@ -13,6 +13,8 @@ public:
 	void RemoveComponent();
 private:
 	std::vector<std::tr1::shared_ptr<Component>> vComp;
+	Folders(Folders const&);
+	Folders& operator=(Folders const&);
 };
 
 #endif // FOLDERS_H

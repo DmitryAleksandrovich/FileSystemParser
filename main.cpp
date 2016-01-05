@@ -10,8 +10,8 @@
 
 int main(int argc, char* argv[])
 {
-	std::tr1::shared_ptr<Component> ob(new Folders);
-	Display ds("D:\\GitHub");
+	std::tr1::shared_ptr<ct::Component> ob(new fr::Folders);
+	dl::Display ds("D:\\GitHub");
 
 	ds.UserInteraction(ob);
 	

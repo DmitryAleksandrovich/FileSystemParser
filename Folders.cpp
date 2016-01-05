@@ -1,5 +1,7 @@
 #include "Folders.h"
 
+using namespace fr;
+
 Folders::Folders()
 {
 }

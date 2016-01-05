@@ -1,6 +1,7 @@
 #include "Component.h"
 #include <assert.h>
 
+using namespace ct;
 
 Component::Component()
 {

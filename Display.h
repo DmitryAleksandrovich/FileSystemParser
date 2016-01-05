@@ -8,19 +8,22 @@
 #include "Folders.h"
 #include "Files.h"
 
-class Display
+namespace dl
 {
-public:
-	Display(std::string const& initalRoot);
-	~Display();
-	void TreeTraversal(std::tr1::shared_ptr<Component> ob);
-	void UserInteraction(std::tr1::shared_ptr<Component> ob);
-	void SetRoot(std::string const& newRoot);
-	std::string GetPathDirectory() const;
-private:
-	std::string pathDirectory;
-	Display(Display const&);
-	Display& operator=(Display const&);
-};
+	class Display
+	{
+	public:
+		Display(std::string const& initalRoot);
+		~Display();
+		void TreeTraversal(std::tr1::shared_ptr<ct::Component> ob);
+		void UserInteraction(std::tr1::shared_ptr<ct::Component> ob);
+		void SetRoot(std::string const& newRoot);
+		std::string GetPathDirectory() const;
+	private:
+		std::string pathDirectory;
+		Display(Display const&);
+		Display& operator=(Display const&);
+	};
+}
 
 #endif // DISPLAY_H

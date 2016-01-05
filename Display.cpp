@@ -1,5 +1,7 @@
 #include "Display.h"
 
+using namespace dl;
+
 Display::Display(std::string const& initalRoot)
 {
 	pathDirectory = initalRoot;
@@ -20,7 +22,7 @@ void Display::SetRoot(std::string const& newRoot)
 	pathDirectory = newRoot;
 }
 
-void Display::TreeTraversal(std::tr1::shared_ptr<Component> ob)
+void Display::TreeTraversal(std::tr1::shared_ptr<ct::Component> ob)
 {
 	_finddata_t findData;
 	intptr_t done;
@@ -38,7 +40,7 @@ void Display::TreeTraversal(std::tr1::shared_ptr<Component> ob)
 			{
 				if(findData.attrib & _A_SUBDIR)
 				{
-					std::tr1::shared_ptr<Component>obCurrent(new Folders);
+					std::tr1::shared_ptr<ct::Component>obCurrent(new fr::Folders);
 					ob->AddComponent(obCurrent);
 					SetRoot(tempPath + static_cast<std::string>(findData.name));
 					obCurrent->SetName(findData.name);
@@ -47,7 +49,7 @@ void Display::TreeTraversal(std::tr1::shared_ptr<Component> ob)
 				}
 				else
 				{
-					std::tr1::shared_ptr<Component>obCurrent(new Files);
+					std::tr1::shared_ptr<ct::Component>obCurrent(new fl::Files);
 					ob->AddComponent(obCurrent);
 					obCurrent->SetName(findData.name);
 				}
@@ -58,7 +60,7 @@ void Display::TreeTraversal(std::tr1::shared_ptr<Component> ob)
 	}
 }
 
-void Display::UserInteraction(std::tr1::shared_ptr<Component> ob)
+void Display::UserInteraction(std::tr1::shared_ptr<ct::Component> ob)
 {
 	TreeTraversal(ob);
 	std::string strStream, strOption;

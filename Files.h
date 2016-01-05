@@ -3,6 +3,7 @@
 #include "Component.h"
 #include <iostream>
 
+/* Implementation of the leaf object */
 namespace fl
 {
 	class Files: public ct::Component
@@ -10,8 +11,9 @@ namespace fl
 	public:
 		Files();
 		~Files();
-		void Search(std::string const& strKeyword);
+		void Search(std::string const& strKeyword); // Serch files
 	private:
+		/* Dissalow the implicit generation copy constructor and assignment operator */
 		Files(Files const&);
 		Files& operator=(Files const&);
 	};

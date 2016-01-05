@@ -8,6 +8,7 @@
 #include "Folders.h"
 #include "Files.h"
 
+/* Convenience class for user interaction */
 namespace dl
 {
 	class Display
@@ -15,12 +16,13 @@ namespace dl
 	public:
 		Display(std::string const& initalRoot);
 		~Display();
-		void TreeTraversal(std::tr1::shared_ptr<ct::Component> ob);
-		void UserInteraction(std::tr1::shared_ptr<ct::Component> ob);
-		void SetRoot(std::string const& newRoot);
-		std::string GetPathDirectory() const;
+		void TreeTraversal(std::tr1::shared_ptr<ct::Component> ob); // Read the directory tree
+		void UserInteraction(std::tr1::shared_ptr<ct::Component> ob); // Function for user interaction
+		void SetRoot(std::string const& newRoot); // Change root
+		std::string GetPathDirectory() const; // Get path root
 	private:
 		std::string pathDirectory;
+		/* Dissalow the implicit generation copy constructor and assignment operator */
 		Display(Display const&);
 		Display& operator=(Display const&);
 	};

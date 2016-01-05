@@ -27,7 +27,8 @@ void Display::TreeTraversal(std::tr1::shared_ptr<Component> ob)
 	std::string tempPath = GetPathDirectory() + "\\";
 	std::string fileName = GetPathDirectory() + "\\*";
 	done = _findfirst(fileName.c_str(), &findData);
-	if(done != -1L)
+	bool isDone = (done != -1L);
+	if(isDone)
 	{
 		do
 		{
@@ -67,7 +68,9 @@ void Display::UserInteraction(std::tr1::shared_ptr<Component> ob)
 		std::cout << "If you want to search files in the current directory, enter \"DIR\".";
 		std::cout << "If you want to change root directory, enter \"CD\"\n";
 		std::cin >> strOption;
-		if(strOption == "DIR" || strOption == "dir")
+		bool isStrOptionDir = (strOption == "DIR" || strOption == "dir");
+		bool isStrOptionCd = (strOption == "CD" || strOption == "cd");
+		if(isStrOptionDir)
 		{
 			std::cout << "Enter the full name or part of the file name: ";
 			std::cin >> strStream;
@@ -75,7 +78,7 @@ void Display::UserInteraction(std::tr1::shared_ptr<Component> ob)
 			ob->Search(strStream);
 			std::cout << '\n';			
 		}
-		else if(strOption == "CD" || strOption == "cd")
+		else if(isStrOptionCd)
 		{
 			ob->RemoveComponent();
 			std::cout << "Enter new root: ";

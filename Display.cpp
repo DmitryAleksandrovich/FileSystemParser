@@ -34,8 +34,8 @@ void Display::TreeTraversal(std::tr1::shared_ptr<ct::Component> ob)
 	{
 		do
 		{
-			bool isName = ((strlen(findData.name) == 1) && (findData.name[0] == '.')) ||
-				((strlen(findData.name) == 2) && (strstr(findData.name, ".."))); // Ignore folders names "." and ".."
+			bool isName = ((strlen(findData.name) == lenghtNameOnePoint) && (findData.name[0] == '.')) ||
+				((strlen(findData.name) == lenghtNameTwoPoints) && (strstr(findData.name, ".."))); // Ignore folders names "." and ".."
 			if(!isName)
 			{
 				if(findData.attrib & _A_SUBDIR)

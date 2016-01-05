@@ -22,6 +22,9 @@ namespace dl
 		std::string GetPathDirectory() const; // Get path root
 	private:
 		std::string pathDirectory;
+		/* Enum tric */
+		enum {lenghtNameOnePoint = 1};
+		enum {lenghtNameTwoPoints = 2};
 		/* Dissalow the implicit generation copy constructor and assignment operator */
 		Display(Display const&);
 		Display& operator=(Display const&);

@@ -1,7 +1,3 @@
-#include <io.h>
-#include <iostream>
-#include <windows.h>
-#include <memory>
 #include "Component.h"
 #include "Folders.h"
 #include "Display.h"

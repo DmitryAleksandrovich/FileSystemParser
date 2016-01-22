@@ -7,7 +7,7 @@
 int main(int argc, char* argv[])
 {
 	std::tr1::shared_ptr<ct::Component> ob(new fr::Folders);
-	dl::Display ds("C:\\Program Files"); // Specifies the root
+	dl::Display ds("C:\\Program Files\\Common Files"); // Specifies the root
 
 	ds.UserInteraction(ob);
 	

@@ -11,9 +11,9 @@ namespace fr
 	public:
 		Folders();
 		~Folders();
-		void AddComponent(std::tr1::shared_ptr<Component> pComp); // Add component in vector
-		void Search(std::string const& strKeyword); // Serch in catalog
-		void RemoveComponent(); // Clear vector
+		void AddComponent(std::tr1::shared_ptr<Component> pComp) override; // Add component in vector
+		void Search(std::string const& strKeyword) override; // Serch in catalog
+		void RemoveComponent() override; // Clear vector
 	private:
 		std::vector<std::tr1::shared_ptr<Component>> vComp;
 		/* Dissalow the implicit generation copy constructor and assignment operator */

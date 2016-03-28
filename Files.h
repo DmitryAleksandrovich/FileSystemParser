@@ -11,7 +11,7 @@ namespace fl
 	public:
 		Files();
 		~Files();
-		void Search(std::string const& strKeyword); // Serch files
+		void Search(std::string const& strKeyword) override; // Serch files
 	private:
 		/* Dissalow the implicit generation copy constructor and assignment operator */
 		Files(Files const&);

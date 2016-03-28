@@ -2,9 +2,8 @@
 
 using namespace dl;
 
-Display::Display(std::string const& initalRoot)
+Display::Display(std::string const& initalRoot) : pathDirectory(initalRoot)
 {
-	pathDirectory = initalRoot;
 }
 
 
@@ -34,8 +33,9 @@ void Display::TreeTraversal(std::tr1::shared_ptr<ct::Component> ob)
 	{
 		do
 		{
+			/* Ignore folders names "." and ".." */
 			bool isName = ((strlen(findData.name) == lenghtNameOnePoint) && (findData.name[0] == '.')) ||
-				((strlen(findData.name) == lenghtNameTwoPoints) && (strstr(findData.name, ".."))); // Ignore folders names "." and ".."
+				((strlen(findData.name) == lenghtNameTwoPoints) && (strstr(findData.name, "..")));
 			if(!isName)
 			{
 				if(findData.attrib & _A_SUBDIR)

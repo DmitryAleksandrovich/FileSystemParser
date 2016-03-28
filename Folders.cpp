@@ -18,7 +18,7 @@ void Folders::AddComponent(std::tr1::shared_ptr<Component> pComp)
 
 void Folders::Search(std::string const& strKeyword)
 {
-	for (unsigned i = 0; i < vComp.size(); i++)
+	for (unsigned i = 0; i < vComp.size(); ++i)
 	{
 		vComp[i]->Search(strKeyword); // Search in all containers
 	}

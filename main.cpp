@@ -2,8 +2,6 @@
 #include "Folders.h"
 #include "Display.h"
 
-
-
 int main(int argc, char* argv[])
 {
 	std::tr1::shared_ptr<ct::Component> ob(new fr::Folders);

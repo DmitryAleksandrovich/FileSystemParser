@@ -41,7 +41,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="textEdit"/>
+        <widget class="QTextEdit" name="directoryListing"/>
        </item>
       </layout>
      </item>
@@ -62,7 +62,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="textEdit_2"/>
+        <widget class="QTextEdit" name="catalogStatistic"/>
        </item>
       </layout>
      </item>

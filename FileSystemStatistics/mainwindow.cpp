@@ -23,8 +23,8 @@ void MainWindow::slotSelectRoot()
     /* Slot select the root directory */
     QString str = QFileDialog::getExistingDirectory(0, "Select the root directory", pathDirectory);
     listFile.clear();
-    ui->textEdit->clear();
-    ui->textEdit_2->clear();
+    ui->directoryListing->clear();
+    ui->catalogStatistic->clear();
     pathDirectory = str;
     subdirNumber = SubdirectoriesNumber(QDir(str));
     TreeTraversal(QDir(str));
@@ -49,7 +49,7 @@ void MainWindow::TreeTraversal(const QDir &dir)
     QStringList listDir = dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
     foreach(QString subDir, listDir)
     {
-        ui->textEdit->append(dir.absoluteFilePath(subDir));
+        ui->directoryListing->append(dir.absoluteFilePath(subDir));
         TreeTraversal(QDir(dir.absoluteFilePath(subDir)));
     }
     listFile += dir.entryInfoList(QDir::Files); // Save all files (recursively)
@@ -70,13 +70,13 @@ void MainWindow::StatisticDirectory()
 {
     QApplication::processEvents(); // The screen does not hang
     QString str; // The auxiliary variable
-    ui->textEdit_2->append("Current directory - " + pathDirectory + "\n");
+    ui->catalogStatistic->append("Current directory - " + pathDirectory + "\n");
     /* Statistics for extensions and total statistics */
     foreach(const QString &strExtension, extension)
     {
         foreach(QFileInfo file, listFile)
         {
-            if(file.suffix() == strExtension || file.suffix() == "")
+            if(file.suffix() == strExtension || file.suffix().isEmpty())
             {
                 totalFileSize += file.size();
                 ++filesNumber;
@@ -92,7 +92,7 @@ void MainWindow::StatisticDirectory()
         {
             averageFilesSize = totalFileSize / filesNumber;
         }
-        ui->textEdit_2->append("Number of files with extension \"" + strExtension + "\" - " +
+        ui->catalogStatistic->append("Number of files with extension \"" + strExtension + "\" - " +
                                str.setNum(filesNumber) + ", total size - " +
                                str.setNum(totalFileSize) + ", the average size of files - " +
                                str.setNum(averageFilesSize) + "\n");
@@ -111,13 +111,13 @@ void MainWindow::StatisticDirectory()
     {
         averageFilesSizeDir = totalFileSizeDir / filesNumberDir;
     }
-    ui->textEdit_2->append("\nTotal number of files - " + str.setNum(filesNumberDir) +
+    ui->catalogStatistic->append("\nTotal number of files - " + str.setNum(filesNumberDir) +
                            ", total size - " + str.setNum(totalFileSizeDir) +
                            ", the average size of files - " + str.setNum(averageFilesSizeDir) + "\n");
     filesNumberDir = 0;
     totalFileSizeDir = 0;
     averageFilesSizeDir = 0;
 
-    ui->textEdit_2->append("Number of subdirectories in the folder \"" + pathDirectory +
+    ui->catalogStatistic->append("Number of subdirectories in the folder \"" + pathDirectory +
                            "\" - " + str.setNum(subdirNumber));
 }

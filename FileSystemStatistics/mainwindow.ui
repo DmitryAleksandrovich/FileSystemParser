@@ -27,7 +27,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="pbEnterDirectory">
          <property name="text">
           <string>Enter directory</string>
          </property>
@@ -41,14 +41,14 @@
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="directoryListing"/>
+        <widget class="QTextEdit" name="teDirectoryListing"/>
        </item>
       </layout>
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="pbStatisticDirectory">
          <property name="text">
           <string>Statistic directory</string>
          </property>
@@ -62,7 +62,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="catalogStatistic"/>
+        <widget class="QTextEdit" name="teCatalogStatistic"/>
        </item>
       </layout>
      </item>

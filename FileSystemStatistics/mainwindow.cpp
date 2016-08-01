@@ -9,8 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     pathDirectory = QDir::current().absolutePath(); // Set the path to the directory
-    connect(ui->pushButton, SIGNAL(clicked(bool)), SLOT(slotSelectRoot()));
-    connect(ui->pushButton_2, SIGNAL(clicked(bool)), SLOT(slotStatisticDir()));
+    connect(ui->pbEnterDirectory, SIGNAL(clicked(bool)), SLOT(slotSelectRoot()));
+    connect(ui->pbStatisticDirectory, SIGNAL(clicked(bool)), SLOT(slotStatisticDir()));
 }
 
 MainWindow::~MainWindow()
@@ -23,8 +23,8 @@ void MainWindow::slotSelectRoot()
     /* Slot select the root directory */
     QString str = QFileDialog::getExistingDirectory(0, "Select the root directory", pathDirectory);
     listFile.clear();
-    ui->directoryListing->clear();
-    ui->catalogStatistic->clear();
+    ui->teDirectoryListing->clear();
+    ui->teCatalogStatistic->clear();
     pathDirectory = str;
     subdirNumber = SubdirectoriesNumber(QDir(str));
     TreeTraversal(QDir(str));
@@ -49,7 +49,7 @@ void MainWindow::TreeTraversal(const QDir &dir)
     QStringList listDir = dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
     foreach(QString subDir, listDir)
     {
-        ui->directoryListing->append(dir.absoluteFilePath(subDir));
+        ui->teDirectoryListing->append(dir.absoluteFilePath(subDir));
         TreeTraversal(QDir(dir.absoluteFilePath(subDir)));
     }
     listFile += dir.entryInfoList(QDir::Files); // Save all files (recursively)
@@ -70,7 +70,7 @@ void MainWindow::StatisticDirectory()
 {
     QApplication::processEvents(); // The screen does not hang
     QString str; // The auxiliary variable
-    ui->catalogStatistic->append("Current directory - " + pathDirectory + "\n");
+    ui->teCatalogStatistic->append("Current directory - " + pathDirectory + "\n");
     /* Statistics for extensions and total statistics */
     foreach(const QString &strExtension, extension)
     {
@@ -92,7 +92,7 @@ void MainWindow::StatisticDirectory()
         {
             averageFilesSize = totalFileSize / filesNumber;
         }
-        ui->catalogStatistic->append("Number of files with extension \"" + strExtension + "\" - " +
+        ui->teCatalogStatistic->append("Number of files with extension \"" + strExtension + "\" - " +
                                str.setNum(filesNumber) + ", total size - " +
                                str.setNum(totalFileSize) + ", the average size of files - " +
                                str.setNum(averageFilesSize) + "\n");
@@ -111,13 +111,13 @@ void MainWindow::StatisticDirectory()
     {
         averageFilesSizeDir = totalFileSizeDir / filesNumberDir;
     }
-    ui->catalogStatistic->append("\nTotal number of files - " + str.setNum(filesNumberDir) +
+    ui->teCatalogStatistic->append("\nTotal number of files - " + str.setNum(filesNumberDir) +
                            ", total size - " + str.setNum(totalFileSizeDir) +
                            ", the average size of files - " + str.setNum(averageFilesSizeDir) + "\n");
     filesNumberDir = 0;
     totalFileSizeDir = 0;
     averageFilesSizeDir = 0;
 
-    ui->catalogStatistic->append("Number of subdirectories in the folder \"" + pathDirectory +
+    ui->teCatalogStatistic->append("Number of subdirectories in the folder \"" + pathDirectory +
                            "\" - " + str.setNum(subdirNumber));
 }
